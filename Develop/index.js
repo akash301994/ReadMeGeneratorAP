@@ -69,6 +69,8 @@ function writeToFile(fileName, data) {
     })
 }
 
+// just checking if i can push again without branch issues.
+
 // TODO: Create a function to initialize app
 function init() {}
 
