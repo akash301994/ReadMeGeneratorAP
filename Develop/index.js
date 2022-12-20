@@ -4,6 +4,18 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const questions = [
+     {
+        type: 'input',
+        name: 'title',
+        message: 'What is the name of your project?',
+        validate: titleInput => {
+            if (titleInput) {
+                return true;
+            } else {
+                console.log('Please enter a project title');
+            }
+        }
+    },
     {
         type: 'input',
         name: 'github',
@@ -13,30 +25,6 @@ const questions = [
                 return true;
             } else {
                 console.log('Please enter your Github username');
-            }
-        }
-    },
-    {
-        type:'input',
-        name:'email',
-        message:'Please enter your email',
-        validate: emailInput => {
-            if (emailInput) {
-                return true;
-            } else {
-                console.log('Please enter a valid email address');
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'title',
-        message: 'What is the name of your project?',
-        validate: titleInput => {
-            if (titleInput) {
-                return true;
-            } else {
-                console.log('Please enter a project title');
             }
         }
     },
@@ -55,11 +43,31 @@ const questions = [
         }
         
     },
+    {
+        type:'input',
+        name:'email',
+        message:'Please enter your email',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            } else {
+                console.log('Please enter a valid email address');
+            }
+        }
+    },
    
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err) {
+        if (err) {
+            console.error(err);
+            return ;
+        }
+        console.log('Success!');
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {}
